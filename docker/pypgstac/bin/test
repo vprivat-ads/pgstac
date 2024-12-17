@@ -80,6 +80,8 @@ TESTOUTPUT=$(psql -X -q -v ON_ERROR_STOP=1 -f $PGSTACDIR/tests/pgtap.sql pgstac_
 psql -X -q -v ON_ERROR_STOP=1 <<EOSQL
 DROP DATABASE IF EXISTS pgstac_test_pgtap WITH (force);
 EOSQL
+# TODO pgtap coverage
+# https://github.com/okbob/plpgsql_check?tab=readme-ov-file#coverage-metrics
 if [[ $(echo "$TESTOUTPUT" | grep -e '^not') ]]; then
     echo "PGTap tests failed."
     echo "$TESTOUTPUT" | awk NF
